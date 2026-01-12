@@ -32,6 +32,8 @@
             color: var(--text);
             transition: background 0.3s;
         }
+        /* ensure fixed nav doesn't cover content */
+        body { padding-top: var(--nav-height); }
 
         /* Navigation */
         nav {
@@ -157,6 +159,37 @@
         }
 
         #theme-toggle { cursor: pointer; font-size: 1.2rem; }
+
+        /* Mobile menu toggle (hidden on desktop) */
+        #menu-toggle { display: none; cursor: pointer; font-size: 1.2rem; background: transparent; border: none; color: var(--text); }
+
+        /* Responsive adjustments */
+        @media (max-width: 992px) {
+            nav { padding: 0 6%; }
+            .container { padding: 6rem 6%; }
+            .section-title { font-size: 2.4rem; }
+        }
+
+        @media (max-width: 768px) {
+            :root { --nav-height: 70px; }
+            nav { padding: 0 5%; }
+            .logo { font-size: 1.6rem; }
+            .nav-links { display: none; position: absolute; top: var(--nav-height); right: 5%; background: var(--card-bg); padding: 12px; border-radius: 12px; flex-direction: column; gap: 10px; min-width: 160px; box-shadow: 0 10px 30px rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.04); }
+            .nav-links.open { display: flex; }
+            .nav-links li a { display: block; padding: 8px 12px; text-transform: none; }
+            #menu-toggle { display: inline-block; }
+            .nav-right { gap: 10px; }
+            .hero { padding: 0 4%; }
+            .card { padding: 28px 18px; border-radius: 18px; }
+            .grid { gap: 18px; }
+            .hero p { font-size: 1rem; letter-spacing: 2px; }
+        }
+
+        @media (max-width: 420px) {
+            .container { padding: 4rem 4%; }
+            .hero h1 { font-size: clamp(2.2rem, 12vw, 4rem); }
+            .template-btn { padding: 10px 16px; }
+        }
     </style>
 </head>
 <body class="light-mode">
