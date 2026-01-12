@@ -1,0 +1,296 @@
+<html lang="en"><head><script type="text/javascript" src="/___vscode_livepreview_injected_script"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khant Nilesh | Full Stack Developer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #00d2ff;
+            --bg: #0b0f1a;
+            --card-bg: #161e2d;
+            --text: #f8fafc;
+            --accent: #00ff88;
+            --nav-height: 100px;
+        }
+
+        body.light-mode {
+            --bg: #f0f2f5;
+            --card-bg: #ffffff;
+            --text: #1a1a1a;
+            --primary: #007bff;
+        }
+
+        * {
+            margin: 0; padding: 0; box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            transition: background 0.3s;
+        }
+
+        /* Navigation */
+        nav {
+            height: var(--nav-height);
+            background: transparent;
+            padding: 0 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%; top: 0; z-index: 1000;
+            transition: 0.4s;
+        }
+
+        nav.scrolled {
+            height: 80px;
+            background: rgba(11, 15, 26, 0.95);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .logo { font-size: 2rem; font-weight: 900; letter-spacing: 2px; color: var(--text); text-decoration: none; }
+        .logo span { color: var(--primary); }
+
+        .nav-right { display: flex; align-items: center; gap: 30px; }
+        .nav-links { list-style: none; display: flex; gap: 25px; }
+        .nav-links li a { color: var(--text); text-decoration: none; font-size: 0.9rem; font-weight: 500; text-transform: uppercase; opacity: 0.8; }
+        .nav-links li a:hover { color: var(--primary); opacity: 1; }
+
+        /* Nav link button style to match the CONTACT highlight */
+        /* Make nav links look like the CONTACT button */
+        .nav-links li a.contact-btn {
+            padding: 10px 24px;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            border: 2px solid var(--primary);
+            border-radius: 8px;
+            transition: 0.3s;
+            display: inline-block;
+        }
+        .nav-links li a.contact-btn:hover {
+            background: var(--primary);
+            color: #000;
+            box-shadow: 0 0 20px rgba(0, 210, 255, 0.4);
+            opacity: 1;
+        }
+
+        .contact-btn { padding: 10px 24px; color: var(--primary); text-decoration: none; font-weight: 600; border: 2px solid var(--primary); border-radius: 8px; transition: 0.3s; }
+        .contact-btn:hover { background: var(--primary); color: #000; box-shadow: 0 0 20px rgba(0, 210, 255, 0.4); }
+
+        /* Hero Section */
+        .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+        .hero h1 { font-size: clamp(3rem, 10vw, 6rem); font-weight: 900; }
+        .hero h1 span { color: var(--primary); }
+        .hero p { font-size: 1.5rem; letter-spacing: 5px; color: var(--accent); margin-top: 15px; }
+
+        /* Grid & Cards */
+        .container { padding: 8rem 10%; max-width: 1300px; margin: 0 auto; }
+        .section-title { text-align: center; margin-bottom: 4rem; font-size: 2.8rem; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+
+        .card {
+            background: var(--card-bg);
+            padding: 50px 30px; border-radius: 30px;
+            text-align: center;
+            transition: 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .card:hover { transform: translateY(-15px); border-color: var(--primary); box-shadow: 0 20px 40px rgba(0, 210, 255, 0.2); }
+
+        .progress-bg { background: rgba(128,128,128,0.2); height: 8px; border-radius: 10px; margin: 20px 0; }
+        .progress-fill { background: linear-gradient(90deg, var(--primary), var(--accent)); height: 100%; border-radius: 10px; }
+
+        /* Footer */
+        footer {
+            background: #05070a;
+            padding: 5rem 10% 3rem;
+            text-align: center;
+            border-top: 1px solid var(--primary);
+        }
+
+        .footer-links {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .template-btn {
+            padding: 12px 30px;
+            background: transparent;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Email Button Style */
+        .email-link {
+            border: 1px solid var(--primary);
+            color: var(--primary);
+        }
+        .email-link:hover {
+            background: var(--primary);
+            color: #000;
+            box-shadow: 0 0 15px var(--primary);
+        }
+
+        /* Figma Button Style */
+        .figma-link {
+            border: 1px solid var(--accent);
+            color: var(--accent);
+        }
+        .figma-link:hover {
+            background: var(--accent);
+            color: #000;
+            box-shadow: 0 0 15px var(--accent);
+        }
+
+        #theme-toggle { cursor: pointer; font-size: 1.2rem; }
+    </style>
+</head>
+<body class="light-mode">
+
+    <nav id="navbar" class="">
+        <a href="#" class="logo">K<span>N</span></a>
+        <div class="nav-right">
+            <ul class="nav-links">
+                <li><a href="#skills" class="contact-btn">Skills</a></li>
+                <li><a href="#projects" class="contact-btn">Projects</a></li>
+            </ul>
+            <a href="mailto:codewithnitu@gmail.com" class="contact-btn">CONTACT</a>
+            <button id="theme-toggle" class="contact-btn"><i class="fas fa-sun"></i></button>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <h1>KHANT <span>NILESH</span></h1>
+        <p>Full Stack Developer</p>
+    </section>
+
+    <section id="skills" class="container">
+        <h2 class="section-title">My Expertise</h2>
+        <div class="grid">
+            <div class="card" style="opacity: 1; transform: translateY(0px); transition: 0.7s ease-out;">
+                <i class="fab fa-html5" style="color:#e34c26; font-size: 4rem;"></i>
+                <h3>HTML</h3>
+                <div class="progress-bg"><div class="progress-fill" style="width: 60%;"></div></div>
+                <p>60%</p>
+            </div>
+            <div class="card" style="opacity: 1; transform: translateY(0px); transition: 0.7s ease-out;">
+                <i class="fab fa-css3-alt" style="color:#264de4; font-size: 4rem;"></i>
+                <h3>CSS</h3>
+                <div class="progress-bg"><div class="progress-fill" style="width: 35%;"></div></div>
+                <p>35%</p>
+            </div>
+            <div class="card" style="opacity: 1; transform: translateY(0px); transition: 0.7s ease-out;">
+                <i class="fab fa-js" style="color:#f0db4f; font-size: 4rem;"></i>
+                <h3>JavaScript</h3>
+                <div class="progress-bg"><div class="progress-fill" style="width: 15%;"></div></div>
+                <p>15%</p>
+            </div>
+            <div class="card" style="opacity: 1; transform: translateY(0px); transition: 0.7s ease-out;">
+                <i class="fab fa-python" style="color:#306998; font-size: 4rem;"></i>
+                <h3>Python</h3>
+                <div class="progress-bg"><div class="progress-fill" style="width: 15%;"></div></div>
+                <p>15%</p>
+            </div>
+            <div class="card" style="opacity: 1; transform: translateY(0px); transition: 0.7s ease-out;">
+                <i class="fab fa-php" style="color:#8993be; font-size: 4rem;"></i>
+                <h3>PHP</h3>
+                <div class="progress-bg"><div class="progress-fill" style="width: 20%;"></div></div>
+                <p>20%</p>
+            </div>
+            <div class="card" style="opacity: 1; transform: translateY(0px); transition: 0.7s ease-out;">
+                <i class="fas fa-database" style="color:#4aa3b8; font-size: 4rem;"></i>
+                <h3>SQLite</h3>
+                <div class="progress-bg"><div class="progress-fill" style="width: 10%;"></div></div>
+                <p>10%</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="container">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="grid">
+            <div class="card" style="opacity: 1; transform: translateY(0px); transition: 0.7s ease-out;">
+                <i class="fas fa-shopping-cart" style="color:var(--primary); font-size: 3rem;"></i>
+                <h3>Shopping Website</h3>
+                <p>Modern E-commerce interface.</p>
+            </div>
+            <div class="card" style="opacity: 1; transform: translateY(0px); transition: 0.7s ease-out;">
+                <i class="fab fa-whatsapp" style="color:#25D366; font-size: 3rem;"></i>
+                <h3>WhatsApp Clone</h3>
+                <p>Mobile chat UI.</p>
+            </div>
+            <div class="card" style="opacity: 1; transform: translateY(0px); transition: 0.7s ease-out;">
+                <i class="fas fa-gamepad" style="color:#ff4757; font-size: 3rem;"></i>
+                <h3>Flappy Game</h3>
+                <p>JS arcade physics.</p>
+            </div>
+            <div class="card" style="opacity: 1; transform: translateY(0px); transition: 0.7s ease-out;">
+                <i class="fas fa-calculator" style="color:#ffa502; font-size: 3rem;"></i>
+                <h3>Dynamic Calculator</h3>
+                <p>Mathematical tool.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <h2 style="font-size: 2.5rem; font-weight: 800;">KHANT NILESH</h2>
+        <p style="color: var(--primary); font-weight: 600; letter-spacing: 2px;">FULL STACK DEVELOPER</p>
+        
+        <div class="footer-links">
+            <a href="mailto:codewithnitu@gmail.com" class="template-btn email-link">
+                <i class="fas fa-envelope"></i> codewithnitu@gmail.com
+            </a>
+            <a href="https://www.figma.com" target="_blank" class="template-btn figma-link">
+                <i class="fab fa-figma"></i> WEB TEMPLATES
+            </a>
+        </div>
+        
+        <p style="opacity: 0.5; font-size: 0.8rem; margin-top: 40px;">© 2026 | Portfolio of Khant Nilesh</p>
+    </footer>
+
+    <script>
+        const navbar = document.getElementById('navbar');
+        window.onscroll = () => {
+            if (window.scrollY > 50) navbar.classList.add('scrolled');
+            else navbar.classList.remove('scrolled');
+        };
+
+        const themeBtn = document.getElementById('theme-toggle');
+        themeBtn.addEventListener('click', () => {
+            document.body.classList.toggle('light-mode');
+            themeBtn.querySelector('i').classList.toggle('fa-moon');
+            themeBtn.querySelector('i').classList.toggle('fa-sun');
+        });
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(50px)';
+            el.style.transition = 'all 0.7s ease-out';
+            observer.observe(el);
+        });
+    </script>
+
+</body></html>
